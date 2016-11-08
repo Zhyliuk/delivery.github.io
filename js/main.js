@@ -566,7 +566,8 @@ Parsley.setLocale('uk');
                 errorsWrapper: "<span class='help-block'></span>",
                 errorTemplate: "<span></span>"
             })
-            .on('form:submit', function() {
+            .on('form:submit', function(e) {
+                e.preventdefault();
                 var l = Ladda.create( $('.ladda-button' )[0]);
                 l.start();
                 emailjs.send("gmail","template_e9qKgUeG",{
