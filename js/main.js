@@ -567,7 +567,7 @@ Parsley.setLocale('uk');
                 errorTemplate: "<span></span>"
             })
             .on('form:submit', function() {
-                var l = Ladda.create( $('.ladda-button' ) );
+                var l = Ladda.create( $('.ladda-button' )[0]);
                 l.start();
                 emailjs.send("gmail","template_e9qKgUeG",{
                     name: $('form[name="orders"] input[name="name"]').val(),
