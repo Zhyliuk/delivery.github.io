@@ -555,6 +555,8 @@ Parsley.setLocale('uk');
         });
 
         $('input[name="phone"]').inputmask({"mask": "(999) 999-9999"});
+     
+        var l = Ladda.create($('.ladda-button'));
 
         $('form[name="orders"]')
             .parsley({
@@ -567,7 +569,7 @@ Parsley.setLocale('uk');
                 errorTemplate: "<span></span>"
             })
             .on('form:submit', function(e) {
-               
+                l.start();
                 emailjs.send("gmail","template_e9qKgUeG",{
                     name: $('form[name="orders"] input[name="name"]').val(),
                     phone: $('form[name="orders"] input[name="phone"]').val(),
@@ -575,9 +577,11 @@ Parsley.setLocale('uk');
                     products_list : $('form[name="orders"] textarea[name="products_list"]').val()
                 })
                     .then(function(response) {
+                        l.stop();
                         swal('Дякуємо за Ваше замовлення!', 'Найближчим часом наші менеджери опрацюють замовлення, та зв’яжуться з вами для підтвердження.', 'success');
                   
                     }, function(err) {
+                        l.stop();
                         console.log("FAILED. error=", err);
 
                     });
