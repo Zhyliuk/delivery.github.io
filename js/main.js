@@ -556,7 +556,7 @@ Parsley.setLocale('uk');
 
         $('input[name="phone"]').inputmask({"mask": "(999) 999-9999"});
      
-        var l = Ladda.create($('.ladda-button'));
+        var l = Ladda.create(document.querySelector('.ladda-button'));
 
         $('form[name="orders"]')
             .parsley({
